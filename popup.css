@@ -1,0 +1,14 @@
+body {
+	width: 15rem;
+	background-color: #1d3557;
+}
+
+h3 {
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+
+h3 span {
+	color: red;
+}
