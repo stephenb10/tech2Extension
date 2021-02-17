@@ -1,0 +1,47 @@
+{
+  "name": "Tech2",
+  "description": "Tools to make CRM more efficient",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://tech2.crm6.dynamics.com/*"
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "defaukt_title": "Tech2",
+    "default_icon": {
+      "16": "/images/t216.png",
+      "32": "/images/t232.png",
+      "48": "/images/t248.png",
+      "128": "/images/t2128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/t216.png",
+    "32": "/images/t232.png",
+    "48": "/images/t248.png",
+    "128": "/images/t2128.png"
+  },
+  "commands": {
+    "test": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+5"
+      },
+      "description": "Add 4 device template"
+    }
+  }
+}
