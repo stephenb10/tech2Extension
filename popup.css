@@ -1,14 +1,39 @@
 body {
 	width: 15rem;
 	background-color: #1d3557;
-}
-
-h3 {
-	display: flex;
-	justify-content: center;
 	color: white;
 }
 
-h3 span {
+h2 {
+	display: flex;
+	justify-content: center;
+	font-size: 1.2em;
+	margin: 10px;
+	margin-bottom: 20px;
+}
+
+h2 span {
 	color: red;
+}
+
+.links {
+	display: flex;
+	justify-content: center;
+}
+
+.links a {
+	width: 5em;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.credits {
+	margin-top: 1em;
+	margin-left: 10px
+}
+
+.credits p {
+	font-size: x-small;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
