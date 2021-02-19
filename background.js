@@ -1,4 +1,3 @@
-
 function execute4dTemplate() {
   console.log("template")
   chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {

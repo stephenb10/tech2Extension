@@ -1,6 +1,6 @@
-//description.fieldControl-text-box-text
+console.log('in action helper script');
 setTimeout(() => {
-    let actionNotes = $('textarea[data-id="description.fieldControl-text-box-text"]')
-    console.log("-******************************", actionNotes.val())
-    actionNotes.attr("height", "50vh")
-}, 3000);
+	let actionNotes = $('textarea[data-id="description.fieldControl-text-box-text"]');
+	console.log('-******************************', actionNotes.val());
+	actionNotes.height('55vh');
+}, 500);
