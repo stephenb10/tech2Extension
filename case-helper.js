@@ -26,9 +26,12 @@ function setupActionCallback() {
 
 			setTimeout(() => {
 			let actionNotes = $('textarea[data-id="description.fieldControl-text-box-text"]')
+			actionNotes.focus()
+			setTimeout(()=>{
+				actionNotes.val(a)
+				//jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
 
-			actionNotes.val(a)
-			console.log(actionNotes.className)
+			},100);
 		}, 2000);
 		});
 
