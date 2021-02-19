@@ -1,4 +1,3 @@
-
 function execute4dTemplate() {
   console.log("template")
   chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
@@ -99,6 +98,11 @@ chrome.tabs.onUpdated.addListener(function
           break;
         case 'ttg_action': // Action
           console.log("In an action")
+          // Execute the jquery
+          // action-helper.js 
+          chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
+            chrome.tabs.executeScript(null, { file: "action-helper.js" });
+          });
           break;
       }
     }
