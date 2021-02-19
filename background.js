@@ -88,8 +88,8 @@ chrome.tabs.onUpdated.addListener(function
           break;
         case 'incident': // Case 
           console.log("In a case")
-          chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
-            chrome.tabs.executeScript(null, { file: "case-helper.js" });
+          chrome.tabs.executeScript(tabID, { file: "jquery-3.5.1.min.js" }, function () {
+            chrome.tabs.executeScript(tabId, { file: "case-helper.js" });
           });
           break;
         case 'phonecall': // Phone call
@@ -100,8 +100,8 @@ chrome.tabs.onUpdated.addListener(function
           console.log("In an action")
           // Execute the jquery
           // action-helper.js 
-          chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
-            chrome.tabs.executeScript(null, { file: "action-helper.js" });
+          chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
+            chrome.tabs.executeScript(tabId, { file: "action-helper.js" });
           });
           break;
       }
