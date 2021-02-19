@@ -10,8 +10,30 @@ $(document).ready(function () {
 		// check if action button already exists id = tech2cutbutton
 		// Inject Jquery
 		cutButton == null && createCutButton();
+		setupActionCallback()
 	}, 3000);
 });
+
+
+function setupActionCallback() {
+	setTimeout(() => {
+		console.log("*********************setting up action callback")
+		let newActionButton = $('button[data-id="ttg_action|NoRelationship|SubGridStandard|Mscrm.SubGrid.ttg_action.AddNewStandard"]')
+		console.log("*********************", newActionButton)
+		newActionButton.click(function () {
+			console.log("***************************clicked new action")
+			let a = generateTemplate()
+
+			setTimeout(() => {
+			let actionNotes = $('textarea[data-id="description.fieldControl-text-box-text"]')
+
+			actionNotes.val(a)
+			console.log(actionNotes.className)
+		}, 2000);
+		});
+
+	}, 4000);
+}
 
 // Create the Cut button next to Customer Facing Note
 function createCutButton() {
@@ -36,25 +58,28 @@ function onCutButtonPressed() {
 	document.execCommand('copy');
 }
 
+function generateTemplate() {
+	let template = 'Subscription: ' +
+		getSub() +
+		'\nCase: ' +
+		$('input[data-id="ticketnumber.fieldControl-text-box-text"]').val() +
+		'\n' +
+		'\nIssue:' +
+		'\n- ' +
+		$('textarea[data-id="description.fieldControl-text-box-text"]').val() +
+		'\n' +
+		'\nActions:' +
+		'\n- ' +
+		'\n' +
+		'\nOutcomes:' +
+		'\n- Issue(s) addressed'
+
+	return template
+}
 // Set Customer Facing Note to pre generated template
 function createTemplate() {
 	$('textarea[data-id="ttg_customerfacingnote.fieldControl-text-box-text"]').focus();
-	$('textarea[data-id="ttg_customerfacingnote.fieldControl-text-box-text"]').val(
-		'Subscription: ' +
-			getSub() +
-			'\nCase: ' +
-			$('input[data-id="ticketnumber.fieldControl-text-box-text"]').val() +
-			'\n' +
-			'\nIssue:' +
-			'\n- ' +
-			$('textarea[data-id="description.fieldControl-text-box-text"]').val() +
-			'\n' +
-			'\nActions:' +
-			'\n- ' +
-			'\n' +
-			'\nOutcomes:' +
-			'\n- Issue(s) addressed'
-	);
+	$('textarea[data-id="ttg_customerfacingnote.fieldControl-text-box-text"]').val(generateTemplate());
 }
 
 // Return the CRM generated Subscription ID
