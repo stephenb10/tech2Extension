@@ -88,7 +88,7 @@ chrome.tabs.onUpdated.addListener(function
           break;
         case 'incident': // Case 
           console.log("In a case")
-          chrome.tabs.executeScript(tabID, { file: "jquery-3.5.1.min.js" }, function () {
+          chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
             chrome.tabs.executeScript(tabId, { file: "case-helper.js" });
           });
           break;
