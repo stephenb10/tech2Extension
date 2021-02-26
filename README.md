@@ -4,7 +4,7 @@
 
 <img src="https://developer-chrome-com.imgix.net/image/BrQidfK9jaQyIHwdw91aVpkPiib2/iYdLKFsJ1KSVGLhbLRvS.png?auto=format&w=650" />
 
-## Features:
+## Features
 
 ### Action Template
 Creates a button that generates the action template pre-filled with the Subscription, CaseID, Title and Outcome and copies this to your clipboard.
