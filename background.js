@@ -88,9 +88,17 @@ chrome.tabs.onUpdated.addListener(function
           break;
         case 'incident': // Case 
           console.log("In a case")
-          chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
-            chrome.tabs.executeScript(tabId, { file: "case-helper.js" });
-          });
+  //        chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
+  //          chrome.tabs.executeScript(tabId, { file: "case-helper.js" });
+  //        });
+			chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['jquery-3.5.1.min.js']
+			});
+			chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['case-helper.js']
+			});
           break;
         case 'phonecall': // Phone call
           break;
@@ -100,9 +108,18 @@ chrome.tabs.onUpdated.addListener(function
           console.log("In an action")
           // Execute the jquery
           // action-helper.js 
-          chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
-            chrome.tabs.executeScript(tabId, { file: "action-helper.js" });
-          });
+  //        chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
+   //         chrome.tabs.executeScript(tabId, { file: "action-helper.js" });
+  //        });
+  
+			chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['jquery-3.5.1.min.js']
+			});
+			chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['action-helper.js']
+			});
           break;
       }
     }
