@@ -1,8 +1,18 @@
-function execute4dTemplate() {
+function execute4dTemplate(tab) {
   console.log("template")
-  chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
-    chrome.tabs.executeScript(null, { file: "contact-helper.js" });
-  });
+  //chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
+ //   chrome.tabs.executeScript(null, { file: "contact-helper.js" });
+ // });
+  const tabId = tab.id;
+
+  chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['jquery-3.5.1.min.js']
+			});
+			chrome.scripting.executeScript({
+				target: {tabId: tabId},
+				files: ['contact-helper.js']
+			});
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -21,7 +31,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "4device") {
     console.log("executing context menu")
-    execute4dTemplate();
+    execute4dTemplate(tab);
   }
 });
 
@@ -37,7 +47,7 @@ chrome.commands.onCommand.addListener(function (command, tab) {
 
   if (command == 'test') {
     console.log("correct command pressed")
-    execute4dTemplate();
+    execute4dTemplate(tab);
   }
 
 });
