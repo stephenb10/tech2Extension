@@ -1,18 +1,18 @@
 function execute4dTemplate(tab) {
   console.log("template")
   //chrome.tabs.executeScript(null, { file: "jquery-3.5.1.min.js" }, function () {
- //   chrome.tabs.executeScript(null, { file: "contact-helper.js" });
- // });
+  //   chrome.tabs.executeScript(null, { file: "contact-helper.js" });
+  // });
   const tabId = tab.id;
 
   chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['jquery-3.5.1.min.js']
-			});
-			chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['contact-helper.js']
-			});
+    target: { tabId: tabId },
+    files: ['jquery-3.5.1.min.js']
+  });
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    files: ['contact-helper.js']
+  });
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -25,7 +25,7 @@ chrome.runtime.onInstalled.addListener(() => {
     documentUrlPatterns: ["*://tech2.crm6.dynamics.com/*"]
   });
 
- 
+
 });
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
@@ -92,23 +92,35 @@ chrome.tabs.onUpdated.addListener(function
     const pagetype = urlParams.get('pagetype');
     const entity = urlParams.get('etn')
 
+    if (pagetype == 'dashboard') {
+      console.log("In dashboard")
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        files: ['jquery-3.5.1.min.js']
+      });
+      console.log("executing dashboard helper")
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        files: ['dashboard-helper.js']
+      });
+      console.log("dashboard helper executed")
+
+    }
+
     if (pagetype == 'entityrecord') {
       switch (entity) {
         case 'contact': // Contact 
           break;
         case 'incident': // Case 
           console.log("In a case")
-  //        chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
-  //          chrome.tabs.executeScript(tabId, { file: "case-helper.js" });
-  //        });
-			chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['jquery-3.5.1.min.js']
-			});
-			chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['case-helper.js']
-			});
+          chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['jquery-3.5.1.min.js']
+          });
+          chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['case-helper.js']
+          });
           break;
         case 'phonecall': // Phone call
           break;
@@ -116,23 +128,19 @@ chrome.tabs.onUpdated.addListener(function
           break;
         case 'ttg_action': // Action
           console.log("In an action")
-          // Execute the jquery
-          // action-helper.js 
-  //        chrome.tabs.executeScript(tabId, { file: "jquery-3.5.1.min.js" }, function () {
-   //         chrome.tabs.executeScript(tabId, { file: "action-helper.js" });
-  //        });
-  
-			chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['jquery-3.5.1.min.js']
-			});
-			chrome.scripting.executeScript({
-				target: {tabId: tabId},
-				files: ['action-helper.js']
-			});
+          chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['jquery-3.5.1.min.js']
+          });
+          chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['action-helper.js']
+          });
           break;
       }
     }
+
+   
   }
 }
 );
